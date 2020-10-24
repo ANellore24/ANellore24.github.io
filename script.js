@@ -72,15 +72,17 @@ function create3DPannersAndSpheres() {
     // redSphere.connect(reverb);
     reverb.wet.value = reverbwetvalue;
 
-    var drone = new Tone.Player({
-      url:
+    var drone = new Tone.Player(
+      //url:
         //"https://raw.githubusercontent.com/Tonejs/tonejs.github.io/master/examples/audio/loop/drone.mp3",
       //"https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
      // "https://github.com/ANellore24/ANellore24.github.io/blob/master/drone.mp3",
-     "./drone.mp3",
-      loop: true
-    })
+     "./drone.mp3"
+     
+    );
+    drone.loop=true;
 
+    drone
       .chain(reverb, redSphere, Tone.Master)
       .connect(redSphere)
       .sync()
@@ -89,15 +91,15 @@ function create3DPannersAndSpheres() {
     var pinkSphere = new Tone.Panner3D().toMaster();
     pinkSphere.panningModel = "HRTF";
 
-    var repeat = new Tone.Player({
-      url:
+    var repeat = new Tone.Player(
+      //url:
        //"https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
       // "https://github.com/ANellore24/ANellore24.github.io/blob/master/bass-drone.mp3",
-      "./bass-drone.mp3",
-      loop: true
-    })
-
-      .chain(reverb, pinkSphere, Tone.Master)
+      "./bass-drone.mp3"
+      
+    )
+      repeat.loop = true;
+      repeat.chain(reverb, pinkSphere, Tone.Master)
       .connect(redSphere)
       .sync()
       .start(0);
