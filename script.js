@@ -90,7 +90,7 @@ function create3DPannersAndSpheres() {
     pinkSphere.panningModel = "HRTF";
 
     var repeat = new Tone.Player({
-      //url:
+      url:
        //"https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
       // "https://github.com/ANellore24/ANellore24.github.io/blob/master/bass-drone.mp3",
       "https://github.com/ANellore24/ANellore24.github.io/blob/master/bass-drone.mp3",
