@@ -93,7 +93,7 @@ function create3DPannersAndSpheres() {
       
     };
         
-
+    x1.send();
 
 
    /* var drone = new Tone.Player({
