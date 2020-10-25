@@ -1,4 +1,3 @@
-
 //Variables
 
 /* Room dimension obtained from the parent window */
@@ -73,58 +72,30 @@ function create3DPannersAndSpheres() {
     // redSphere.connect(reverb);
     reverb.wet.value = reverbwetvalue;
 
-    crossOrigin="anonymous"
+    var drone = new Tone.Player({
+      url:
+        //"https://raw.githubusercontent.com/Tonejs/tonejs.github.io/master/examples/audio/loop/drone.mp3",
+      //"https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
+      "drone.mp3",
+      loop: true
+    })
 
-    var drone = new Tone.Player(
-    "https://github.com/ANellore24/ANellore24.github.io/blob/master/drone.mp3"
-    );
-    // var drone = new Tone.Player({
-    //   crossOrigin:true,
-    //   url:
-    //     //"https://raw.githubusercontent.com/Tonejs/tonejs.github.io/master/examples/audio/loop/drone.mp3",
-    //  // "https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
-    // //"./drone.mp3",
-    //  "https://github.com/ANellore24/ANellore24.github.io/blob/master/drone.mp3",
-    //  loop:true
-     
-    // });
-
-    drone.crossOrigin ="anonymous";
-    drone.loop = true;
-    drone.autostart = true;
-    
-    drone
       .chain(reverb, redSphere, Tone.Master)
       .connect(redSphere)
       .sync()
       .start(0);
 
-    
-
     var pinkSphere = new Tone.Panner3D().toMaster();
     pinkSphere.panningModel = "HRTF";
 
-    var repeat = new Tone.Player(
-      "https://github.com/ANellore24/ANellore24.github.io/blob/master/bass-drone.mp3"
-      );
-      repeat.crossOrigin ="anonymous";
-    repeat.loop = true;
-    repeat.autostart = true;
-    
-
-   /*  var repeat = new Tone.Player({
-      crossOrigin:true,
+    var repeat = new Tone.Player({
       url:
        //"https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
-       //"./bass-drone.mp3",
-      "https://github.com/ANellore24/ANellore24.github.io/blob/master/bass-drone.mp3",
-      loop:true
-      
-    }); */
-    //repeat.crossOrigin = "anonymous";
- 
-repeat
-    .chain(reverb, pinkSphere, Tone.Master)
+       "bass-drone.mp3",
+      loop: true
+    })
+
+      .chain(reverb, pinkSphere, Tone.Master)
       .connect(redSphere)
       .sync()
       .start(0);
@@ -203,10 +174,9 @@ repeat
       controls = new THREE.OrbitControls(pannercamera, renderer.domElement);
       controls.addEventListener("change", function () {
         //Temp
-    
-       //Tone.Listener.update(pannercamera.position.x, pannercamera.position.y, pannercamera.position.z);
+       Tone.Listener.setPosition(pannercamera.position.x, pannercamera.position.y, pannercamera.position.z);
         
-       // console(" Tone listener position = "+ Tone.listener.positionX  + pannercamera.positionY + pannercamera.positionZ);S
+        console(" Tone listener position = "+ Tone.listener.positionX  + pannercamera.positionY + pannercamera.positionZ);S
         
       });
       //set the camera initially
