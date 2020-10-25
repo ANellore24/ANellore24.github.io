@@ -72,33 +72,67 @@ function create3DPannersAndSpheres() {
     // redSphere.connect(reverb);
     reverb.wet.value = reverbwetvalue;
 
-    var drone = new Tone.Player({
+    var x1 = new XMLHttpRequest();
+    var drone;
+    x1.open('GET', 'https://cors-anywhere.herokuapp.com/https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3');
+    // I put "XMLHttpRequest" here, but you can use anything you want.
+    x1.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+    x1.onload = function() {
+        alert(x.responseText);
+         drone = new Tone.Player({
+          url:
+           //"https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
+          "https://cors-anywhere.herokuapp.com/https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
+          loop: true
+        });
+        drone
+      .chain(reverb, redSphere, Tone.Master)
+      .connect(redSphere)
+      .sync()
+      .start(0);
+      
+    };
+        
+
+
+
+   /* var drone = new Tone.Player({
       url:
         //"https://raw.githubusercontent.com/Tonejs/tonejs.github.io/master/examples/audio/loop/drone.mp3",
       //"https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
       "drone.mp3",
       loop: true
-    })
+    }) */
 
-      .chain(reverb, redSphere, Tone.Master)
-      .connect(redSphere)
-      .sync()
-      .start(0);
 
     var pinkSphere = new Tone.Panner3D().toMaster();
     pinkSphere.panningModel = "HRTF";
 
-    var repeat = new Tone.Player({
+    var repeat;
+    var x = new XMLHttpRequest();
+x.open('GET', 'https://cors-anywhere.herokuapp.com/https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3');
+// I put "XMLHttpRequest" here, but you can use anything you want.
+x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+x.onload = function() {
+    alert(x.responseText);
+     repeat = new Tone.Player({
       url:
        //"https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
-       "bass-drone.mp3",
+       //"bass-drone.mp3",
+       "https://cors-anywhere.herokuapp.com/https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-55112/zapsplat_sound_design_cinematic_airy_drone_decaying_sub_rumble_56665.mp3",
       loop: true
-    })
+    });
+    repeat
+
+   
 
       .chain(reverb, pinkSphere, Tone.Master)
       .connect(redSphere)
       .sync()
       .start(0);
+};
+x.send();
+
 
     reverb.wet.value = reverbwetvalue;
 
