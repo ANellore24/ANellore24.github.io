@@ -78,7 +78,7 @@ function create3DPannersAndSpheres() {
     // I put "XMLHttpRequest" here, but you can use anything you want.
     x1.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
     x1.onload = function() {
-        alert(x.responseText);
+
          drone = new Tone.Player({
           url:
            //"https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
@@ -114,7 +114,7 @@ x.open('GET', 'https://cors-anywhere.herokuapp.com/https://www.zapsplat.com/wp-c
 // I put "XMLHttpRequest" here, but you can use anything you want.
 x.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 x.onload = function() {
-    alert(x.responseText);
+
      repeat = new Tone.Player({
       url:
        //"https://www.zapsplat.com/wp-content/uploads/2015/sound-effects-41945/zapsplat_sound_design_drone_atmos_cold_desolate_eerie_45183.mp3",
@@ -210,7 +210,7 @@ x.send();
         //Temp
        Tone.Listener.setPosition(pannercamera.position.x, pannercamera.position.y, pannercamera.position.z);
         
-        console(" Tone listener position = "+ Tone.listener.positionX  + pannercamera.positionY + pannercamera.positionZ);S
+       // console(" Tone listener position = "+ Tone.listener.positionX  + pannercamera.positionY + pannercamera.positionZ);S
         
       });
       //set the camera initially
