@@ -76,7 +76,7 @@ function create3DPannersAndSpheres() {
     crossOrigin="anonymous"
 
     var drone = new Tone.Player(
-    "http://github.com/ANellore24/ANellore24.github.io/blob/master/drone.mp3"
+    "https://github.com/ANellore24/ANellore24.github.io/blob/master/drone.mp3"
     );
     // var drone = new Tone.Player({
     //   crossOrigin:true,
@@ -105,7 +105,7 @@ function create3DPannersAndSpheres() {
     pinkSphere.panningModel = "HRTF";
 
     var repeat = new Tone.Player(
-      "http://github.com/ANellore24/ANellore24.github.io/blob/master/bass-drone.mp3"
+      "https://github.com/ANellore24/ANellore24.github.io/blob/master/bass-drone.mp3"
       );
       repeat.crossOrigin ="anonymous";
     repeat.loop = true;
